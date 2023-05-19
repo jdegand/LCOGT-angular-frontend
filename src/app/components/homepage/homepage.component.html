@@ -1,0 +1,5 @@
+<h1>Current Entries</h1>
+
+<div *ngFor="let planet of planets; index as i;">
+  <h2><a [routerLink]="['/details', planet.name]"> {{planet.name}}</a></h2>
+</div>

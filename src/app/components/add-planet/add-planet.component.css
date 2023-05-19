@@ -1,0 +1,11 @@
+label {
+    display: block;
+}
+
+.errors-container {
+    height: 30px;
+}
+
+small {
+    color: red;
+}

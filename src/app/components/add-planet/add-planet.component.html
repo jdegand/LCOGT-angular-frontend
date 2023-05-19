@@ -1,0 +1,61 @@
+<div class="planet-form-container">
+    <form [formGroup]="planetForm" (ngSubmit)="onSubmit()" #localForm="ngForm">
+  
+        <div class="form-grid">
+            
+            <div>
+                <label for="name">Name</label>
+                <input id="name" type="text" class="form-control" formControlName="name" placeholder="Add Planet's Name Here">
+                <div class="errors-container">
+                  <small *ngIf="localForm.submitted && planetForm.get('name')?.hasError('required')">Name is required.</small>
+                  <small *ngIf="planetForm.get('name')?.hasError('minlength')">Name must be at least 3 characters long.</small>
+                  <small *ngIf="planetForm.get('name')?.hasError('maxlength')">Name can be 8 characters or less.</small>
+                  <small *ngIf="planetForm.get('name')?.hasError('duplicate')">Planet is already in the database.</small>
+                </div>    
+            </div>
+            
+            <div>
+                <label for="size">Size</label>
+                <input id="size" type="number" formControlName="size" placeholder="Planet Size in Earth Masses">
+                <div class="errors-container">
+                  <small *ngIf="localForm.submitted && planetForm.get('size')?.hasError('required')">Size is required.</small>
+                  <small *ngIf="planetForm.get('size')?.hasError('pattern')">3 numbers before decimal and 4 numbers after decimal allowed</small>
+                </div>  
+            </div>
+    
+            <div>
+                <label for="distance">Distance</label>
+                <input id="distance" type="number" formControlName="distance" placeholder="in Astronomical Units">
+                <div class="errors-container">
+                  <small *ngIf="localForm.submitted && planetForm.get('distance')?.hasError('required')">Distance is required.</small>
+                  <small *ngIf="planetForm.get('distance')?.hasError('pattern')">2 numbers before decimal and 3 numbers after decimal allowed</small>
+                </div>  
+            </div>
+  
+            <div>
+              <label for="ordinality">Ordinality</label>
+              <input id="ordinality" type="number" formControlName="ordinality" placeholder="Ordinality">
+              <div class="errors-container">
+                <small *ngIf="localForm.submitted && planetForm.get('ordinality')?.hasError('required')">Ordinality is required.</small>
+                <small *ngIf="planetForm.get('ordinality')?.hasError('pattern')">Numbers from 1 to 8 allowed.</small>
+              </div>  
+          </div>
+  
+          <div>
+            <label for="description">Description</label>
+            <textarea id="description" formControlName="description" placeholder="Description"></textarea>
+            <div class="errors-container">
+              <small *ngIf="localForm.submitted && planetForm.get('description')?.hasError('required')">Description is required.</small>
+              <small *ngIf="planetForm.get('description')?.hasError('maxLength')">Max length is 400 characters.</small>
+            </div>  
+        </div>
+  
+        </div>
+        <div class="button-container">
+            <button type="submit"> <!--[disabled]="planetForm.invalid"-->
+                Submit
+            </button>
+        </div>
+    </form>
+  
+  </div>
