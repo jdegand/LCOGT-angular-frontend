@@ -2,6 +2,32 @@
 
 This is a conversion of [my previous solution](https://github.com/jdegand/LCOGT-takehomeinterview) to this [repo](https://github.com/LCOGT/takehomeinterview).
 
+## Screenshots
+
+![](screenshots/LCOGT-angular-frontend-homepage.png "Homepage")
+
+***
+
+![](screenshots/LCOGT-angular-frontend-detail-page.png "Planet Details Page")
+
+***
+
+![](screenshots/LCOGT-angular-frontend-add-form.png)
+
+***
+
+![](screenshots/LCOGT-angular-frontend-async-validator-on-blur.png "Async validator for name on blur")
+
+***
+
+![](screenshots/LCOGT-angular-frontend-validation-on-blur.png)
+
+***
+
+![](screenshots/LCOGT-angular-frontend-validation-on-submit.png "Required errors on submit and other errors persist")
+
+***
+
 ## Goal
 Create a web application where a user can view and add planets to a database.
 
