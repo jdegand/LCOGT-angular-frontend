@@ -104,6 +104,45 @@ Provide an application that can serve multiple users, with a backend component a
 - Angular CLI - This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
 - Angular
 
+## How to Use
+
+The Express application runs by default on `localhost:8080` and has the following endpoints:
+
+ - `http://localhost:8080` - returns all planet entries.
+ - `http://localhost:8080/planets` - endpoint to post a new planet in the database
+ - `http://localhost:8080/planets/detail/:name` - returns a single planet entry 
+
+### Running the Express Backend Application
+
+You can clone my the whole [repo](https://github.com/jdegand/LCOGT-takehomeinterview) and checkout to the json branch or just clone the json branch.  
+
+```bash 
+
+git clone https://github.com/jdegand/LCOGT-takehomeinterview.git -b json --single-branch
+
+# cd into the directory
+npm install
+
+npm start
+```
+
+You can verify the API is working by visiting http://localhost:8080 in
+your browser or another HTTP client.
+
+### Running the Angular Application
+
+Run the express application first.  Use two terminals.  
+
+```bash
+
+git clone https://github.com/jdegand/LCOGT-angular-frontend.git
+
+# cd into the directory
+npm install 
+
+npm start
+```
+
 ## Thoughts
 
 - Rebuilding something you have already done in a different way can reveal errors and edge-cases
