@@ -16,16 +16,12 @@ export class HomepageComponent {
     }
 
     fetchPlanets(){
-      // subscribe can only take one argument now
+      // subscribe can only take one argument now vs having a callback for error handling
 
-      /*
-      this.planetsService.fetchPlanets().subscribe((data) => {
-        this.planets = data.entries;
-      });
-      */
+      // put all data under a entries key to help with TypeScript typing - not necessary?
 
       this.planetsService.fetchPlanets().subscribe({
-        next: (data) => this.planets = data.entries,
+        next: (data: Entries) => this.planets = data.entries,
         error: (e) => console.error(e),
         complete: () => console.info('complete') 
     })

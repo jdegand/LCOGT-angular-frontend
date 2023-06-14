@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { PlanetsService } from 'src/app/service/planets.service';
 import { Planet } from '../../planet';
 
@@ -16,7 +14,6 @@ export class DetailsPageComponent {
 
   ngOnInit() {
     const planetName = this.route.snapshot.paramMap.get('name');
-    console.log('planetName', planetName)
     if(planetName){
       this.fetchPlanet(planetName);
     }

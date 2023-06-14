@@ -12,7 +12,6 @@ export class PlanetsService {
   constructor(private http: HttpClient) { }
 
   addPlanet(formObject: any){
-    console.log('formObject', formObject);
     return this.http.post<any>('http://localhost:8080/planets', formObject);
   }
 

@@ -2,6 +2,8 @@
 
 This is a conversion of [my previous solution](https://github.com/jdegand/LCOGT-takehomeinterview) to this [repo](https://github.com/LCOGT/takehomeinterview).
 
+Now, the frontend is separate from the server and requires the json branch of the backend to work.  See the [how to use section](#how-to-use) for more. 
+
 ## Screenshots
 
 ![](screenshots/LCOGT-angular-frontend-homepage.png "Homepage")
@@ -99,10 +101,12 @@ For example:
 ### Bonus
 Provide an application that can serve multiple users, with a backend component as opposed to a pure client side application.
 
+***
+
 ## Built With
 
-- Angular CLI - This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
-- Angular
+- [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
+- [Angular](https://angular.io/)
 
 ## How to Use
 
@@ -146,13 +150,15 @@ npm start
 ## Thoughts
 
 - Rebuilding something you have already done in a different way can reveal errors and edge-cases
-- My original regex implementation was flawed.  It wasn't working as intended.  The main cause of error was using {0,3} versus {1,3}.  {1,3} includes 0.  By using {0,3} you match for a number of length 3 only.    
+- My original regex implementation was flawed.  It wasn't working as intended.  The main cause of error was using {0,3} versus {1,3}.  {1,3} includes 0.  By using {0,3} you match for a number of length 3 only.   
+- Regex may still be flawed. 
 - I didn't focus on validating whether the name was unique in the previous implementation
-- In this project, I used an async name validator to make sure each name was unique before submission is allowed.  Much better implementation than allowing submission only to have to send an error object back to the client.  
+- In this project, I used an async name validator to make sure each name was unique before submission is allowed.  Much better implementation than allowing submission only to have to send an error (409) back to the client.  
 - Typically, I code the backend first but since I will be trying to convert my express server to a Spring Boot server I started with the frontend.  Then I realized I had to convert my old express server to actually send json.  I had coupled the server with the template in the previous implementation.  I changed the port to 8080 as well to be prepared for the future conversion.  
-- In converting the previous server to send json, you need to add CORS package - otherwise you will unable to make requests without passing a cors option to all requests.  You can make a different choice on the shape of the json sent.  I used a key for all the planets but not for individual planet objects.  I did this intitally to get around a typescript error about a partial interface.  I made the id of the Planet interface optional but the error still persisted.    
+- In converting the previous server to send json, you need to add CORS package - otherwise you will unable to make requests without passing a cors option to all requests.  You can make a different choice on the shape of the json sent.  I used a key for all the planets but not for individual planet objects.  I did this intitally to get around a typescript error about a partial interface.  I made the id of the Planet interface optional but the error still persisted. 
 - The async validator works but I need to research more about best practices as implementation can be improved.  
-- Some of the recent changes in Angular seem to be trying to limit callback usage.  See [RxJS](https://rxjs.dev/deprecations/subscribe-arguments) documentation for an example.       
+- Some of the recent changes in Angular seem to be trying to limit callback usage.  See [RxJS](https://rxjs.dev/deprecations/subscribe-arguments) documentation for an example.   
+- In converting to Spring Boot, I found that a change may be necessary to the `homepage.component.ts` file. I wrapped the data returned in an entries key to help with Typescript typing.  At present, my spring boot conversion does not wrap all planets in an entries key. I changed `data.entries` to `data` and the spring boot backend worked with this frontend.  
 
 ## Useful Resources
 
