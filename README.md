@@ -2,7 +2,9 @@
 
 This is a conversion of [my previous solution](https://github.com/jdegand/LCOGT-takehomeinterview) to this [repo](https://github.com/LCOGT/takehomeinterview).
 
-Now, the frontend is separate from the server and requires the json branch of the backend to work.  See the [how to use section](#how-to-use) for more. 
+Now, the frontend is separate from the server and requires the json branch of the [express backend](https://github.com/jdegand/LCOGT-takehomeinterview) to work.  See the [how to use section](#how-to-use) for more. 
+
+This frontend also works with a [spring boot backend](https://github.com/jdegand/LCOGT-spring-backend).
 
 ## Screenshots
 
@@ -158,7 +160,7 @@ npm start
 - In converting the previous server to send json, you need to add CORS package - otherwise you will unable to make requests without passing a cors option to all requests.  You can make a different choice on the shape of the json sent.  I used a key for all the planets but not for individual planet objects.  I did this intitally to get around a typescript error about a partial interface.  I made the id of the Planet interface optional but the error still persisted. 
 - The async validator works but I need to research more about best practices as implementation can be improved.  
 - Some of the recent changes in Angular seem to be trying to limit callback usage.  See [RxJS](https://rxjs.dev/deprecations/subscribe-arguments) documentation for an example.   
-- In converting to Spring Boot, I found that a change may be necessary to the `homepage.component.ts` file. I wrapped the data returned in an entries key to help with Typescript typing.  At present, my spring boot conversion does not wrap all planets in an entries key. I changed `data.entries` to `data` and the spring boot backend worked with this frontend.  
+- In converting to Spring Boot, I found that a change may have been necessary to the `homepage.component.ts` file. I wrapped the data returned from the get all planets route in an entries key to help with Typescript typing.  My Spring Boot conversion did not wrap all planets in an entries key until I changed the return for all planets route to use a Map so no changes were necessary in the frontend.  
 
 ## Useful Resources
 
