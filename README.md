@@ -158,9 +158,12 @@ npm start
 - In this project, I used an async name validator to make sure each name was unique before submission is allowed.  Much better implementation than allowing submission only to have to send an error (409) back to the client.  
 - Typically, I code the backend first but since I will be trying to convert my express server to a Spring Boot server I started with the frontend.  Then I realized I had to convert my old express server to actually send json.  I had coupled the server with the template in the previous implementation.  I changed the port to 8080 as well to be prepared for the future conversion.  
 - In converting the previous server to send json, you need to add CORS package - otherwise you will unable to make requests without passing a cors option to all requests.  You can make a different choice on the shape of the json sent.  I used a key for all the planets but not for individual planet objects.  I did this intitally to get around a typescript error about a partial interface.  I made the id of the Planet interface optional but the error still persisted. 
-- The async validator works but I need to research more about best practices as implementation can be improved.  
+- The async validator works but I need to research more about best practices as the implementation can be improved.  
 - Some of the recent changes in Angular seem to be trying to limit callback usage.  See [RxJS](https://rxjs.dev/deprecations/subscribe-arguments) documentation for an example.   
-- In converting to Spring Boot, I found that a change may have been necessary to the `homepage.component.ts` file. I wrapped the data returned from the get all planets route in an entries key to help with Typescript typing.  My Spring Boot conversion did not wrap all planets in an entries key until I changed the return for all planets route to use a Map so no changes were necessary in the frontend.  
+- In converting to Spring Boot, I found that a change may have been necessary to the `homepage.component.ts` file. I wrapped the data returned from the get all planets route in an entries key to help with Typescript typing.  My Spring Boot conversion did not wrap all planets in an entries key until I changed the return for all planets route to use a Map so no changes were necessary in the frontend. 
+- Added karma-firefox-launcher and started to add some tests
+- The async validator implementation is problematic - need to refactor to make easier to test ?
+- Changed the backend object to use id versus planetId - this allows the planet interface to be used in more places  
 
 ## Useful Resources
 
@@ -189,3 +192,17 @@ npm start
 - [Github](https://github.com/angular/angular/issues/15741) - FormGroup reset() doesn't reset custom form control #15741
 - [YouTube](https://www.youtube.com/watch?v=Wr2PYMs1P1g) - Retrieving Form Data and Reseting Form | Angular Forms | Angular 13+
 - [UX Movement](https://uxmovement.com/forms/the-best-place-for-error-messages-on-forms/) - best place for error messages on forms
+- [Testim](https://www.testim.io/blog/testing-angular-services/) - testing angular services
+- [Angular Training Rangle](https://angular-training-guide.rangle.io/testing/services/http/using-httptestingmodule) - http testing module
+- [YouTube](https://www.youtube.com/watch?v=ZS1k-hxMnh0) - Part 38 -Angular Unit test case on Http Client or services method | Angular unit test case Tutorials
+- [YouTube](https://www.youtube.com/watch?v=15othucRXcI) - 30. Testing Services which has HttpClient as dependency by using Jasmine Spy - Angular Unit testing
+- [Angular](https://angular.io/guide/http-test-requests) -http test requests
+- [Stack Overflow](https://stackoverflow.com/questions/49039457/angular-error-no-provider-for-activatedroute) - angular error no privder for activatedRoute
+- [Joshua Colvin](https://www.joshuacolvin.net/mocking-activated-route-data-in-angular/) - mocking activated route data in angular
+- [YouTube](https://www.youtube.com/watch?v=HilQRac28gM) - UT Params and query params | Angular 15 | Angular unit testing
+- [Stack Overflow](https://stackoverflow.com/questions/51327641/service-undefined-jasmine-test) - service undefined jasmine test
+- [Codecraft](https://codecraft.tv/courses/angular/unit-testing/asynchronous/) - async unit testing
+- [Stack Overflow](https://stackoverflow.com/questions/73361624/angular-unit-test-how-to-test-reactive-form-reset-method) - test reactive form reset method
+- [Stack Overflow](https://stackoverflow.com/questions/49009135/angular-formbuilder-testing-with-async-validator) - testing with async validator
+- [Stack Overflow](https://stackoverflow.com/questions/60152333/angular-karma-jasmine-testing-form-validation-error) - testing form validation error
+- [YouTube](https://www.youtube.com/watch?v=79kEX6Xmgxc) - Chapter - 29 AsyncValidator unit testing | Angular Unit Testing | Jasmine | Karma

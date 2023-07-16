@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PlanetsService } from 'src/app/service/planets.service';
 import { Entries } from 'src/app/entries';
+import { Planet } from 'src/app/planet';
 
 @Component({
   selector: 'app-homepage',
@@ -9,7 +10,7 @@ import { Entries } from 'src/app/entries';
 })
 export class HomepageComponent {
   constructor(private planetsService: PlanetsService){}
-    planets: any = [];
+    planets: Planet[] = [];
 
     ngOnInit(){
       this.fetchPlanets();

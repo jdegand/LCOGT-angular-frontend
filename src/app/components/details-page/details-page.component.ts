@@ -12,14 +12,16 @@ export class DetailsPageComponent {
   constructor(private route: ActivatedRoute, private planetsService: PlanetsService) {}
   planet?:Planet | null = undefined;
 
+  planetName: string | null | undefined;
+
   ngOnInit() {
-    const planetName = this.route.snapshot.paramMap.get('name');
-    if(planetName){
-      this.fetchPlanet(planetName);
+    this.planetName = this.route.snapshot.paramMap.get('name');
+    if(this.planetName){
+      this.fetchPlanetByName(this.planetName);
     }
   }
 
-  fetchPlanet(name: string){
+  fetchPlanetByName(name: string){
     this.planetsService.fetchPlanet(name).subscribe((planet)=> {
       this.planet = planet;
     });
