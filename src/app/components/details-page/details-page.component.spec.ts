@@ -4,7 +4,7 @@ import { DetailsPageComponent } from './details-page.component';
 import { Planet } from 'src/app/planet';
 import { ActivatedRoute } from '@angular/router';
 
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 import { PlanetsService } from 'src/app/service/planets.service';
 
 describe('DetailsPageComponent', () => {
@@ -26,7 +26,7 @@ describe('DetailsPageComponent', () => {
         useValue: {
           snapshot: {
             paramMap: {
-              get: () => "Mars", // represents planet name
+              get: () => "Saturn", // doesn't need to match #fetchPlanet test's planet name  
             },
           },
         },
@@ -40,4 +40,25 @@ describe('DetailsPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('#fetchPlanet', () => {
+
+    const mockPlanet: Planet = {
+      "id": "1",
+      "name": "Saturn",
+      "size": 55.55,
+      "distance": 55.55,
+      "ordinality": 6,
+      "description": ""
+    }
+
+    mockPlanetsSpy.fetchPlanet.and.returnValue(of(mockPlanet));
+    
+    component.fetchPlanetByName("Saturn");
+
+    fixture.detectChanges();
+
+    expect(component.planet).toEqual(mockPlanet);
+  });
+
 });

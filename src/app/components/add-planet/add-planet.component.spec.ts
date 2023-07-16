@@ -32,6 +32,11 @@ describe('AddPlanetComponent', () => {
 
   // async validator causes problems
   // need to refactor to make easier to test
-  // reset form may need to go in separate function
+
+  it('#reset', () => {
+    const spyformReset = spyOn(component.planetForm, 'reset').and.callThrough();
+    component.reset();
+    expect(spyformReset).toHaveBeenCalled();
+  })
 
 });

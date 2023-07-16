@@ -49,14 +49,14 @@ export class AddPlanetComponent {
     return response;
   }
 
-  onSubmit(){
-    // console.log(this.planetForm.value);
-    // this.planetForm.value gets all the form values but id will be missing 
-    // partial of Planet needed? - making id optional in the interface should be a fix
+  reset(){
+    this.form?.resetForm();
+  }
 
+  onSubmit(){
     if(this.planetForm.valid){
       this.planetsService.addPlanet(this.planetForm.value).subscribe(data => console.log(data));
-      this.form?.resetForm();
+      this.reset();
       // this.router.navigate(['/']); if you redirect here, the new value will not be added to the homepage in time
       // need to add async / await and change implementation to have work as intended - loading state might help?
     }
