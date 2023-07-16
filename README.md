@@ -207,4 +207,4 @@ npm start
 - [Stack Overflow](https://stackoverflow.com/questions/60152333/angular-karma-jasmine-testing-form-validation-error) - testing form validation error
 - [YouTube](https://www.youtube.com/watch?v=79kEX6Xmgxc) - Chapter - 29 AsyncValidator unit testing | Angular Unit Testing | Jasmine | Karma
 - [Stack Overflow](https://stackoverflow.com/questions/59121033/is-it-bad-practice-to-use-a-promise-without-reject) - bad practice to use a promise without reject
-- [Stack Overlfow](https://stackoverflow.com/questions/46573314/angular-forcing-a-reactive-form-to-be-valid-in-a-unit-test)
+- [Stack Overflow](https://stackoverflow.com/questions/46573314/angular-forcing-a-reactive-form-to-be-valid-in-a-unit-test) - forcing a reactive form to be valid in a unit test
