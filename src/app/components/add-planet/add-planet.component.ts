@@ -24,7 +24,6 @@ export class AddPlanetComponent {
     description: new FormControl('', [Validators.required, Validators.maxLength(400)]),
   }, {updateOn: 'blur'});
 
-  
   // name has to be unique - asyncValidator
   // using FormControl as type causes an error - not generic enough?
   // this function doesn't have to be async   
@@ -38,7 +37,7 @@ export class AddPlanetComponent {
       setTimeout(async()=> {
         const value = await firstValueFrom(this.planetsService.fetchPlanet(control.value));
 
-        if(value){
+        if(value !== null){
           resolve({duplicate: true});
         } else {
           resolve(null);

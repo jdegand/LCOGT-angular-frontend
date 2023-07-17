@@ -147,6 +147,10 @@ git clone https://github.com/jdegand/LCOGT-angular-frontend.git
 npm install 
 
 npm start
+
+# For tests -> karma-firefox-launcher included -> install correct launcher for your browser
+
+ng test
 ```
 
 ## Thoughts
@@ -164,6 +168,7 @@ npm start
 - Added karma-firefox-launcher and started to add some tests
 - The async validator implementation is problematic - need to refactor to make easier to test ?
 - Changed the backend object to use id versus planetId - this allows the planet interface to be used in more places  
+- I went through a lot of iterations in trying to test the nameAsyncValidator.  It was difficult to find a suitable example that I could learn from.  Adding to the difficulty was the validator's setTimeout.
 
 ## Useful Resources
 
@@ -208,3 +213,10 @@ npm start
 - [YouTube](https://www.youtube.com/watch?v=79kEX6Xmgxc) - Chapter - 29 AsyncValidator unit testing | Angular Unit Testing | Jasmine | Karma
 - [Stack Overflow](https://stackoverflow.com/questions/59121033/is-it-bad-practice-to-use-a-promise-without-reject) - bad practice to use a promise without reject
 - [Stack Overflow](https://stackoverflow.com/questions/46573314/angular-forcing-a-reactive-form-to-be-valid-in-a-unit-test) - forcing a reactive form to be valid in a unit test
+- [Stack Overflow](https://stackoverflow.com/questions/75025593/testing-custom-async-validator/75031815#75031815) - testing custom async validator
+- [DZone](https://dzone.com/articles/writing-and-testing-custom-angular-validators-the) - writing and testing custom angular validators
+- [CodeTuts](https://code.tutsplus.com/angular-fundamentals--CRS-200838c/unit-testing-validators) - unit testing validators
+- [Stack Overflow](https://stackoverflow.com/questions/53696305/how-can-i-make-an-angular-async-validator-timeout) - async validator timeout
+- [Blog](https://www.damirscorner.com/blog/posts/20210917-TestingTimersWithFakeAsync.html) - testing timers with fake async
+- [Github](https://github.com/jasmine/jasmine/issues/1878) - Test case are failing, when testing setTimeout inside function #1878
+- [Stack Overflow](https://stackoverflow.com/questions/41772989/test-a-function-that-contains-a-settimeout) - test a function that contains a setTimeout

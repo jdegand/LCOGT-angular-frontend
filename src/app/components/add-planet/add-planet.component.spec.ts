@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { AddPlanetComponent } from './add-planet.component';
 import { PlanetsService } from 'src/app/service/planets.service';
@@ -31,16 +31,62 @@ describe('AddPlanetComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // async validator causes problems
-  // need to refactor to make easier to test
-
   it('#reset', () => {
     const spyformReset = spyOn(component.planetForm, 'reset').and.callThrough();
     component.reset();
     expect(spyformReset).toHaveBeenCalled();
   })
 
-  it('#onSubmit', ()=> {
+  it('Async Validation testing - Planet Name in DB', fakeAsync(()=> {
+
+    // not much documentation or tutorial examples to test custom validators
+    // add to that - the validator uses a timeout - so you have worry about async issues as well
+    // this video https://www.youtube.com/watch?v=79kEX6Xmgxc tutorial's code is likely wrong - the test always returns true
+
+    let name = component.planetForm.controls['name'];
+
+    name.setValue('Earth');
+
+    fixture.detectChanges();
+
+    mockPlanetsService.fetchPlanet.and.returnValue(of({
+      "id": "1",
+      "name": "Earth",
+      "size": 55.55,
+      "distance": 55.55,
+      "ordinality": 6,
+      "description": ""
+    }));
+
+    tick(4000);
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      expect(name.hasError).toBeTruthy();
+    })
+
+  }));
+
+  it('Async Validation testing - Planet Name NOT FOUND', fakeAsync(()=> {
+
+    let name = component.planetForm.controls['name'];
+
+    name.setValue('Earth');
+
+    fixture.detectChanges();
+
+    mockPlanetsService.fetchPlanet.and.returnValue(of(null));
+
+    tick(4000);
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      expect(name.valid).toBeTruthy();
+    })
+
+  }));
+
+  it('#onSubmit', () => {
     Object.defineProperty(component.planetForm, 'valid', {
       get: () => true
     });
