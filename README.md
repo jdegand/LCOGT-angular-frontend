@@ -155,20 +155,20 @@ ng test
 
 ## Thoughts
 
-- Rebuilding something you have already done in a different way can reveal errors and edge-cases
-- My original regex implementation was flawed.  It wasn't working as intended.  The main cause of error was using {0,3} versus {1,3}.  {1,3} includes 0.  By using {0,3} you match for a number of length 3 only.   
-- Regex may still be flawed. 
-- I didn't focus on validating whether the name was unique in the previous implementation
-- In this project, I used an async name validator to make sure each name was unique before submission is allowed.  Much better implementation than allowing submission only to have to send an error (409) back to the client.  
-- Typically, I code the backend first but since I will be trying to convert my express server to a Spring Boot server I started with the frontend.  Then I realized I had to convert my old express server to actually send json.  I had coupled the server with the template in the previous implementation.  I changed the port to 8080 as well to be prepared for the future conversion.  
-- In converting the previous server to send json, you need to add CORS package - otherwise you will unable to make requests without passing a cors option to all requests.  You can make a different choice on the shape of the json sent.  I used a key for all the planets but not for individual planet objects.  I did this intitally to get around a typescript error about a partial interface.  I made the id of the Planet interface optional but the error still persisted. 
+- Rebuilding something you have already done in a different way can reveal errors and edge-cases.
+- My original regex implementation for the size and distance fields was flawed. One cause of error was using {0,3} versus {1,3}.  {1,3} includes 0.  By using {0,3} you match for a number of length 3 only.   
+- Regex is probably still flawed.  It can be tough to get a regex working without much trial and error.  
+- It was simpler to implement the validation for the size and distance fields on the Spring Boot backend with the @Digits annotation.  
+- I didn't focus on validating whether the name was unique in the Express implementation.
+- In this project, I used an async name validator to make sure each name was unique before submission.  This is a better implementation than allowing submission only to have to send an error (409) back to the client.
+- Typically, I code the backend first.  Since I planned on converting my Express server to a Spring Boot server, I started with the frontend.  I had to convert my Express server to send json.  I had coupled the server with the template in the previous implementation.  I changed the port to 8080 and added CORS package to Express server. 
+- Changed the backend object to use id versus planetId - this allows the planet interface to be used in more places in the frontend.
+- Could put the interfaces, entries and planet, inside their own folder.  Imports would have to updated. 
+- In converting to Spring Boot, I found that a change may have been necessary to the `homepage.component.ts` file. I wrapped the data returned from the get all planets route in an entries key to help with Typescript typing.  My Spring Boot conversion did not wrap all planets in an entries key until I changed the return for all planets route to use a Map so no changes were necessary in the frontend.  
 - The async validator works but I need to research more about best practices as the implementation can be improved.  
-- Some of the recent changes in Angular seem to be trying to limit callback usage.  See [RxJS](https://rxjs.dev/deprecations/subscribe-arguments) documentation for an example.   
-- In converting to Spring Boot, I found that a change may have been necessary to the `homepage.component.ts` file. I wrapped the data returned from the get all planets route in an entries key to help with Typescript typing.  My Spring Boot conversion did not wrap all planets in an entries key until I changed the return for all planets route to use a Map so no changes were necessary in the frontend. 
-- Added karma-firefox-launcher and started to add some tests
-- The async validator implementation is problematic - need to refactor to make easier to test ?
-- Changed the backend object to use id versus planetId - this allows the planet interface to be used in more places  
-- I went through a lot of iterations in trying to test the nameAsyncValidator.  It was difficult to find a suitable example that I could learn from.  Adding to the difficulty was the validator's setTimeout.
+- Some of the recent changes in Angular seem to be trying to limit callback usage.  See [RxJS](https://rxjs.dev/deprecations/subscribe-arguments) documentation for an example.  
+- Added karma-firefox-launcher and added tests.
+- I went through a lot of iterations in trying to test the nameAsyncValidator.  It was difficult to find a suitable example that I could learn from.  Adding to the difficulty was the validator's setTimeout. 
 
 ## Useful Resources
 
