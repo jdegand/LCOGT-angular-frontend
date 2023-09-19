@@ -1,10 +1,10 @@
 # LCOGT Angular Frontend
 
-This is a conversion of [my previous solution](https://github.com/jdegand/LCOGT-takehomeinterview) to this [repo](https://github.com/LCOGT/takehomeinterview).
+This is a conversion of [my previous solution](https://github.com/jdegand/LCOGT-takehomeinterview) to a past interview test from [LCOGT](https://github.com/LCOGT).
 
 Now, the frontend is separate from the server and requires the json branch of the [express backend](https://github.com/jdegand/LCOGT-takehomeinterview) to work.  See the [how to use section](#how-to-use) for more. 
 
-This frontend also works with a [spring boot backend](https://github.com/jdegand/LCOGT-spring-backend).
+This frontend also works with a [Spring Boot backend](https://github.com/jdegand/LCOGT-spring-backend).
 
 ## Screenshots
 
@@ -157,17 +157,17 @@ ng test
 
 - Rebuilding something you have already done in a different way can reveal errors and edge-cases.
 - My original regex implementation for the size and distance fields was flawed. One cause of error was using {0,3} versus {1,3}.  {1,3} includes 0.  By using {0,3} you match for a number of length 3 only.   
-- Regex is probably still flawed.  It can be tough to get a regex working without much trial and error.  
+- Regex is probably still flawed.  It can be tough to get a regex working without much trial and error.  Plus, I had not setup testing at the time I worked on the regex.  
 - It was simpler to implement the validation for the size and distance fields on the Spring Boot backend with the @Digits annotation.  
 - I didn't focus on validating whether the name was unique in the Express implementation.
 - In this project, I used an async name validator to make sure each name was unique before submission.  This is a better implementation than allowing submission only to have to send an error (409) back to the client.
-- Typically, I code the backend first.  Since I planned on converting my Express server to a Spring Boot server, I started with the frontend.  I had to convert my Express server to send json.  I had coupled the server with the template in the previous implementation.  I changed the port to 8080 and added CORS package to Express server. 
-- Changed the backend object to use id versus planetId - this allows the planet interface to be used in more places in the frontend.
-- Could put the interfaces, entries and planet, inside their own folder.  Imports would have to updated. 
-- In converting to Spring Boot, I found that a change may have been necessary to the `homepage.component.ts` file. I wrapped the data returned from the get all planets route in an entries key to help with Typescript typing.  My Spring Boot conversion did not wrap all planets in an entries key until I changed the return for all planets route to use a Map so no changes were necessary in the frontend.  
+- Typically, I code the backend first.  Since I planned on converting my Express server to a Spring Boot server, I started with the frontend.  I had to convert my Express server to send json.  I had coupled the server with the template in the previous implementation.  I changed the port to 8080 and added the CORS package to the Express server. 
+- I changed the backend object to use `id` versus `planetId`. This change allows the planet interface to be used in more places in the frontend.
+- You could put the interfaces (entries, planet) inside their own folder.  Imports would have to updated. 
+- In converting to Spring Boot, I found that a change may have been necessary to the `homepage.component.ts` file. I wrapped the data returned from the get all planets route in an entries key to help with Typescript typing.  My Spring Boot conversion did not wrap all planets in an entries key until I changed the return for the all planets route to use a Map, so no changes were necessary in the frontend.  
 - The async validator works but I need to research more about best practices as the implementation can be improved.  
 - Some of the recent changes in Angular seem to be trying to limit callback usage.  See [RxJS](https://rxjs.dev/deprecations/subscribe-arguments) documentation for an example.  
-- Added karma-firefox-launcher and added tests.
+- I added karma-firefox-launcher and added tests.
 - I went through a lot of iterations in trying to test the nameAsyncValidator.  It was difficult to find a suitable example that I could learn from.  Adding to the difficulty was the validator's setTimeout. 
 
 ## Useful Resources
