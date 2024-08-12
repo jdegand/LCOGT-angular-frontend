@@ -1,8 +1,8 @@
 export interface Planet {
-    id?: String, // problem with spring backend -> planetId
-    name: String,
-    size: Number,
-    distance: Number,
-    ordinality: Number,
-    description: String 
+    id?: string, // problem with spring backend -> planetId
+    name: string,
+    size: number,
+    distance: number,
+    ordinality: number,
+    description: string 
 }
