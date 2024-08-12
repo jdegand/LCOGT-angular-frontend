@@ -5,8 +5,7 @@ import { Planet } from 'src/app/planet';
 
 @Component({
   selector: 'app-homepage',
-  templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  templateUrl: './homepage.component.html'
 })
 export class HomepageComponent {
   constructor(private planetsService: PlanetsService) { }

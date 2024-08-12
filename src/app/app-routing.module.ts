@@ -6,11 +6,11 @@ import { DetailsPageComponent } from './components/details-page/details-page.com
 import { AddPlanetComponent } from './components/add-planet/add-planet.component';
 
 const routes: Routes = [
-  {path: "details/:name", title: 'Details', component: DetailsPageComponent},
-  {path: "add", title: 'Add Planet', component: AddPlanetComponent},
-  {path: "HomepageComponent", component: HomepageComponent},
-  {path: "", redirectTo: "/HomepageComponent", pathMatch: "full"},
-  {path: "**", component: NotFoundComponent}
+  { path: "details/:name", title: 'Details', component: DetailsPageComponent },
+  { path: "add", title: 'Add Planet', component: AddPlanetComponent },
+  { path: "HomepageComponent", component: HomepageComponent },
+  { path: "", redirectTo: "/HomepageComponent", pathMatch: "full" },
+  { path: "**", component: NotFoundComponent }
 ];
 
 @NgModule({
