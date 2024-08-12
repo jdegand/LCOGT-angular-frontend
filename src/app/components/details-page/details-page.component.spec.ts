@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync, flush, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetailsPageComponent } from './details-page.component';
 import { Planet } from 'src/app/planet';
