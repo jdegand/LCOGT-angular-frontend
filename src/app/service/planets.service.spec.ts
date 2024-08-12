@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-
 import { PlanetsService } from './planets.service';
 import { Planet } from '../planet';
 import { Entries } from '../entries';
@@ -23,7 +22,6 @@ describe('PlanetsService', () => {
   });
 
   it('#addPlanet', () => {
-
     const mockPlanet: Planet = {
       "name": "Earth",
       "size": 1,
@@ -87,4 +85,3 @@ describe('PlanetsService', () => {
   })
 
 })
-

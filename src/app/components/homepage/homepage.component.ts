@@ -9,25 +9,22 @@ import { Planet } from 'src/app/planet';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
-  constructor(private planetsService: PlanetsService){}
-    planets: Planet[] = [];
+  constructor(private planetsService: PlanetsService) { }
+  planets: Planet[] = [];
 
-    ngOnInit(){
-      this.fetchPlanets();
-    }
+  ngOnInit() {
+    this.fetchPlanets();
+  }
 
-    fetchPlanets(){
-      // subscribe can only take one argument now vs having a callback for error handling
+  fetchPlanets() {
+    // subscribe can only take one argument now vs having a callback for error handling
+    // put all data under a entries key to help with TypeScript typing - not necessary?
 
-      // put all data under a entries key to help with TypeScript typing - not necessary?
-
-      this.planetsService.fetchPlanets().subscribe({
-        next: (data: Entries) => this.planets = data.entries,
-        error: (e) => console.error(e),
-        complete: () => console.info('complete') 
+    this.planetsService.fetchPlanets().subscribe({
+      next: (data: Entries) => this.planets = data.entries,
+      error: (e) => console.error(e),
+      complete: () => console.info('complete')
     })
-
-
-    }
+  }
 
 }

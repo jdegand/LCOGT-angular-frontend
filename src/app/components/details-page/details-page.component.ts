@@ -9,20 +9,20 @@ import { Planet } from '../../planet';
   styleUrls: ['./details-page.component.css']
 })
 export class DetailsPageComponent {
-  constructor(private route: ActivatedRoute, private planetsService: PlanetsService) {}
-  planet?:Planet | null = undefined;
+  constructor(private route: ActivatedRoute, private planetsService: PlanetsService) { }
+  planet?: Planet | null = undefined;
 
   planetName: string | null | undefined;
 
   ngOnInit() {
     this.planetName = this.route.snapshot.paramMap.get('name');
-    if(this.planetName){
+    if (this.planetName) {
       this.fetchPlanetByName(this.planetName);
     }
   }
 
-  fetchPlanetByName(name: string){
-    this.planetsService.fetchPlanet(name).subscribe((planet)=> {
+  fetchPlanetByName(name: string) {
+    this.planetsService.fetchPlanet(name).subscribe((planet) => {
       this.planet = planet;
     });
   }

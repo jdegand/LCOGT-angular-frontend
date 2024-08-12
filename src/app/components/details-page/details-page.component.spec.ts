@@ -1,9 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DetailsPageComponent } from './details-page.component';
 import { Planet } from 'src/app/planet';
 import { ActivatedRoute } from '@angular/router';
-
 import { of } from 'rxjs';
 import { PlanetsService } from 'src/app/service/planets.service';
 
@@ -42,7 +40,6 @@ describe('DetailsPageComponent', () => {
   });
 
   it('#fetchPlanet', () => {
-
     const mockPlanet: Planet = {
       "id": "1",
       "name": "Saturn",
@@ -53,11 +50,8 @@ describe('DetailsPageComponent', () => {
     }
 
     mockPlanetsSpy.fetchPlanet.and.returnValue(of(mockPlanet));
-    
     component.fetchPlanetByName("Saturn");
-
     fixture.detectChanges();
-
     expect(component.planet).toEqual(mockPlanet);
   });
 
