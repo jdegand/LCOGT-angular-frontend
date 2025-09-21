@@ -13,7 +13,7 @@ export class AddPlanetComponent {
 
   @ViewChild('localForm') form: NgForm | undefined;
 
-  constructor(private planetsService: PlanetsService) { }
+  constructor(private readonly planetsService: PlanetsService) { }
 
   planetForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(8)], this.nameAsyncValidator.bind(this)),
@@ -28,7 +28,7 @@ export class AddPlanetComponent {
   // this function doesn't have to be async   
   nameAsyncValidator(control: any): Promise<any> {
 
-    const response = new Promise((resolve, reject) => {
+    const response = new Promise((resolve, _reject) => {
 
       // don't know if having async callback inside of setTimeout is bad or not
       // I tried subscribing to the planetsService.fetchPlanet call but I wasn't getting a Planet object back

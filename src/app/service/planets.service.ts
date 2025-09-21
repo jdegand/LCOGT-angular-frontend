@@ -9,7 +9,7 @@ import { Planet } from '../planet';
 })
 export class PlanetsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   addPlanet(formObject: any) {
     return this.http.post<any>('http://localhost:8080/planets', formObject);

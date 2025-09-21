@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlanetsService } from 'src/app/service/planets.service';
 import { Planet } from '../../planet';
@@ -7,7 +7,7 @@ import { Planet } from '../../planet';
   selector: 'app-details-page',
   templateUrl: './details-page.component.html'
 })
-export class DetailsPageComponent {
+export class DetailsPageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private planetsService: PlanetsService) { }
   planet?: Planet | null = undefined;
 

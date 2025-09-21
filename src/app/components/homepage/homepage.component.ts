@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlanetsService } from 'src/app/service/planets.service';
 import { Entries } from 'src/app/entries';
 import { Planet } from 'src/app/planet';
@@ -7,7 +7,7 @@ import { Planet } from 'src/app/planet';
   selector: 'app-homepage',
   templateUrl: './homepage.component.html'
 })
-export class HomepageComponent {
+export class HomepageComponent implements OnInit {
   constructor(private planetsService: PlanetsService) { }
   planets: Planet[] = [];
 
