@@ -8,7 +8,7 @@ import { Planet } from '../../planet';
   templateUrl: './details-page.component.html'
 })
 export class DetailsPageComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private planetsService: PlanetsService) { }
+  constructor(private readonly route: ActivatedRoute, private readonly planetsService: PlanetsService) { }
   planet?: Planet | null = undefined;
 
   planetName: string | null | undefined;

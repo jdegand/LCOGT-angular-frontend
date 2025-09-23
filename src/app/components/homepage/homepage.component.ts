@@ -8,7 +8,7 @@ import { Planet } from 'src/app/planet';
   templateUrl: './homepage.component.html'
 })
 export class HomepageComponent implements OnInit {
-  constructor(private planetsService: PlanetsService) { }
+  constructor(private readonly planetsService: PlanetsService) { }
   planets: Planet[] = [];
 
   ngOnInit() {
